@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    
+    var mainLib = {};
+    
+        mainLib.validateSubmit = function (){
+                
+        var User = $('#txtUser').val();
+        var Email = $('#txtEmail').val();
+        var pass1 = $('#pass1').val();
+        var pass2 = $('#pass2').val();
+         
+            var flag=true;
+        
+        if(User == null || User == "")
+        {
+           
+            $('#error_msg1').text('Please enter First Name');
+            $('#error_msg1').css('display', 'block');
+              flag=false;
+        }
+        if(Email == null || Email == "")
+        {
+              
+            $('#error_msg2').text('Please enter email-Id');
+            $('#error_msg2').css('display', 'block');
+             flag=false;
+        }
+        if(pass1 == null || pass1 == "")
+        {
+             
+            $('#error_msg3').text('Please enter your password');
+            $('#error_msg3').css('display', 'block');
+              flag=false;
+        }
+        if(pass2 == null || pass2 == "")
+        {
+             
+            $('#error_msg4').text('Please enter your password');
+            $('#error_msg4').css('display', 'block');
+              flag=false;
+        }
+       
+       if((pass1!=null)&&(pass1!="")){
+            if(pass1==pass2)
+            {
+                flag=true;
+            }
+            else
+            {
+                $('#error_msg3').text('Passwords do not match');
+                $('#error_msg3').css('display', 'block');
+                 flag=false;
+            }
+       }
+            
+        if(flag==false)
+        {
+            return false;
+        }
+        else
+        {
+        $('#error_msg1').css('display', 'none');
+        $('#error_msg2').css('display', 'none');
+        $('#error_msg3').css('display', 'none');
+        $('#error_msg4').css('display', 'none');
+                return true ;
+        }
+    };
+    
+    $(document).ready(function(){
+    
+      $("#btnRegister").click(function(){
+        
+        
+          return mainLib.validateSubmit();          
+       
+      });
+  
+    });
+    
+    
+    
+    
+</script>
+    
+<title>Register User with PHP mysql</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+        
+    <div class="header">
+    <h1>Register User using PHP And Mysql</h1> 
+    </div>
+    <form method="post" action="authenciate.php">
+        <table>
+            <tr>
+            <td>Username:</td>
+            <td><input id="txtUser" type="text" name="username" class="textInput"></td>
+            <td> <div id="error_msg1" style="display:none"></div></td>
+            </tr>
+            
+            <tr>
+            <td>Email:</td>
+            <td><input id="txtEmail" type="email" name="email" class="textInput"></td>
+            <td> <div id="error_msg2" style="display:none"> </div></td>
+            </tr>
+            
+            <tr>
+            <td>Password:</td>
+            <td><input id="pass1" type="password" name="password" class="textInput"></td>
+            <td> <div id="error_msg3" style="display:none"> </div></td>
+            </tr>
+            
+            <tr>
+            <td>Confirm Password:</td>
+            <td><input id="pass2" type="password" name="password2" class="textInput"></td>
+            <td> <div id="error_msg4" style="display:none"> </div></td>
+            </tr>
+            
+            <tr>
+            <td></td>
+            <td><input id="btnRegister" type="submit" name="register_btn" value="Register"></td>
+            </tr>
+        
+        </table>
+    </form>
+    
+    
+</body>
+</html>
+    
